@@ -1,12 +1,21 @@
+import React from 'react';
 import './App.scss';
 import Navbar from './Components/organisms/Navbar/Navbar';
 import Searchbar from './Components/organisms/SearchBar/Searchbar';
-// import style from "./Components/_base/index.scss";
+import { searchPokemon } from './api/index';
+
 function App() {
+  const onSearchHandler = async(pokemon) => {
+    const result = await searchPokemon(pokemon)
+    console.log("pokemon", result)
+
+  }
   return (
     <div>
       <Navbar/>
-      <Searchbar/>
+      <Searchbar
+      onSearch={onSearchHandler}
+      />
     <div className="App"></div>
     </div>
   );

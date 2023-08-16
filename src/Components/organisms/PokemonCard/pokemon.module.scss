@@ -1,0 +1,76 @@
+.pokemonCard {
+    display: flex;
+    justify-content: space-between;
+    border: 3px solid rgba(249, 249, 249, 0.1);
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    &:hover {
+        transform: scale(1.1);
+        transition: all 0.5s;
+    }
+    @media (min-width: 551px) {
+    }
+
+    &__paginacao {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column-reverse;
+        align-items: center;
+        bottom: 20px;
+        &__id {
+            display: flex;
+        }
+    }
+
+    &__imageContainer {
+        display: flex;
+        align-items: center;
+        padding: 0 5px;
+        transition: opacity 500ms ease-in-out 0s;
+    }
+
+    &__img {
+        width: 70px;
+        height: 80px;
+        margin-right: 10px;
+        align-items: center;
+        transition: ease-in-out 0s;
+    }
+
+    &__cardBody {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 10px 10px 10px 0;
+        // flex: 1;
+        &__cardTop {
+            display: flex;
+            justify-content: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+        &__cardTop h3 {
+            text-transform: capitalize;
+            color: #f9f9f9;
+        }
+
+        &__cardTypes {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            color: #f9f9f9;
+
+            &__typeText {
+                margin-right: 10px;
+                text-transform: capitalize;
+                border-radius: 20px;
+                border: 1px solid black;
+
+                box-shadow: rgba(0, 0, 0, 0.69) 0px 26px 30px -10px,
+                    rgba(0, 0, 0, 0.73) 0px 16px 10px -10px;
+                cursor: pointer;
+            }
+        }
+    }
+}

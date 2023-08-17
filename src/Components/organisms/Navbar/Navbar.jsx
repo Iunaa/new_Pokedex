@@ -9,12 +9,14 @@ const Navbar = () => {
     return(
         <>
             <div className={style.navbar}>
-               <img className={style.img}
+               <img className={style.navbar__img}
                alt="pokeapi-logo" 
                src={logoImg}
                />
+            <div className={style.navbar__home}>🕌 Home </div>
+            <div className={style.navbar__heart}>{favoritePokemons ? favoritePokemons.length: 0}❤️ Favorite</div>
             </div>
-            <div>{favoritePokemons.length}❤️</div>
+            
         </>
     )
 }

@@ -7,7 +7,7 @@ import { getPokemonData, getPokemons } from './api';
 import { FavoriteProvider } from './Components/organisms/Contexts/favoritesContext';
 
 
-
+const favoriteKey = "favorites"
 function App() {
   const [loading, setLoading] = useState(false)
   const [page, setPage] = useState(0);
@@ -15,7 +15,7 @@ function App() {
   const [totalPages, setTotalPages] = useState(0);
   const [pokemons, setPokemons] = useState([]);
   const [favorites, setFavorites] = useState([]);    //lista de favoritos que temos
-  const itensPerPage = 26   // a quantidade que cada array tras
+  const itensPerPage = 26  // a quantidade que cada array tras
 
   const fetchPokemons = async () => {
     try{
@@ -41,26 +41,22 @@ function App() {
   useEffect (() => {
   console.log("carregou")
   fetchPokemons();
+ }, [page])  // como o page vai alterar o componente vai renderizar novamente e vai chamar os pokemons
 
-
-    
-  }, [page])  // como o page vai alterar o componente vai renderizar novamente e vai chamar os pokemons
 
   const updateFavoritePokemons = (name) => {
     const updatedFavorites= [...favorites]   //clonando os favoritos para outra variável que iremos mexer
     const favoriteIndex = favorites.indexOf(name)     //ver nos favoritos se ele ja tem o pokemon, se ele tiver, quer dizer que tenho que remover
     if(favoriteIndex >= 0){
-      updatedFavorites.slice(favoriteIndex, 1)    //removo o indice
+      updatedFavorites.splice(favoriteIndex, 1)    //removo o indice
     }else{
       updatedFavorites.push(name);       //fazer um push para adicionar a nossa lista
+      window.localStorage.setItem(favoriteIndex, JSON.stringify(updatedFavorites));
       setFavorites(updatedFavorites);     //podemos dizer que nossos favoritos sao essa lista atualizada
 
     }
 
-    }
-  
- 
-
+  }
  
   return (
    <FavoriteProvider

@@ -11,15 +11,16 @@ const Pokemon = (props) => {
       updateFavoritePokemons(pokemon.name);
 
     }
-    const heart = "❤️"
+    const heart = favoritePokemons.includes(pokemon.name) ? "❤️" : "🖤"
     console.log("pokemon", pokemon)
+
     console.log(pokemon.types[0].type)
     return (
         <div className={styles.pokemonCard}
          style={{background: `url('./assets/img/${pokemon.types[0].type.name}.jpeg')`,
           backgroundSize: "cover"}}>
             <div className={styles.pokemonCard__imageContainer}>
-                <img alt={pokemon.name} src={pokemon['sprites']['versions']['generation-v']['black-white']['animated'].front_default} className={styles.pokemonCard__img}/>   
+                <img alt={pokemon.name} src={pokemon.sprites.versions['generation-v']['black-white'].animated.front_default} className={styles.pokemonCard__img}/>   
             
             <div className={styles.pokemonCard__cardBody}>
                 <div className={styles.pokemonCard__cardBody__cardTop}>
@@ -31,7 +32,8 @@ const Pokemon = (props) => {
                     {pokemon.types.map((type, index) => {
                         return(
                             <>
-                            <div key={index}  className={styles.pokemonCard__cardBody__cardTypes__typeText}>{type.type.name}
+                            <div key={index} className={styles.pokemonCard__cardBody__cardTypes__typeText}  style={{background: `url('./assets/img/${pokemon.types[index].type.name}.jpeg')`,
+                             backgroundSize: "cover"}}>{type.type.name}
                             
                             </div> &nbsp;
                            

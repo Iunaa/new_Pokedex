@@ -20,7 +20,7 @@ const Pokedex = (props) => {
     return(
         <div className={style.pokedex}>
             <div className={style.pokedex__header}>
-                <h1>Pokedéx</h1>
+                <h1 className={style.pokedex__header__title}>Pokedéx</h1>
                  <Pagination      //só recebe por componentes pais
                     page={page+1}      //página atual
                     totalPages={totalPages}

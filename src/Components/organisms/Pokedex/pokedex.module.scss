@@ -19,6 +19,12 @@
         display: grid;
         gap: 10px;
         padding: 40px;
-        grid-template-columns: repeat(2, auto);
+        grid-template-columns: repeat(3, auto);
+        @media (max-width: 1226px) {
+            grid-template-columns: repeat(2, auto);
+        }
+         @media (max-width: 842px) {
+             grid-template-columns: repeat(1, auto);
+        }
     }
 }

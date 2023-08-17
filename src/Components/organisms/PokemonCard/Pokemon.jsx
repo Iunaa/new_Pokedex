@@ -5,14 +5,14 @@ import FavoriteContext from "../Contexts/favoritesContext";
 
 
 const Pokemon = (props) => {
-    const {favoritePokemons, updateFavoritePokemons} = useContext(FavoriteContext)
+    const {favoritePokemon, updateFavoritePokemon} = useContext(FavoriteContext)
     const {pokemon} = props;
     const onHeartClick = () => {
-      updateFavoritePokemons(pokemon.name);
+      updateFavoritePokemon(pokemon.name);
 
     }
-    const heart = favoritePokemons.includes(pokemon.name) ? "❤️" : "🖤"
-    console.log("pokemon", pokemon)
+    const heart = favoritePokemon.includes(pokemon.name) ? "❤️" : "🖤"
+    console.log("bla", favoritePokemon)
 
     console.log(pokemon.types[0].type)
     return (

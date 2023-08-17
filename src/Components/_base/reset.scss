@@ -7,6 +7,8 @@
 
     font-family: "Epilogue", sans-serif;
 
+    background-color: black;
+
     
 }
 
@@ -25,11 +27,12 @@ body {
     font-family: sans-serif;
 
     line-height: 1;
-    background-color: transparent;
+    background-color: black;
 }
 
 body[data-stuck="true"] {
     overflow: hidden;
+    
 }
 
 a {

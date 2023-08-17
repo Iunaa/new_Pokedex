@@ -1,8 +1,8 @@
 import React from "react";
 
 const FavoriteContext = React.createContext({
-    favoritePokemon: [],
-    updateFavoritePokemons: (id) => null   //metodo para atualizar os favoritos
+    favoritePokemon: ["bla"],
+    updateFavoritePokemon: (id) => null   //metodo para atualizar os favoritos
 });
 
 export const FavoriteProvider = FavoriteContext.Provider

@@ -1,0 +1,27 @@
+.control {
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+    background-color: black;
+
+    &__play,
+    &__pause {
+        color: white;
+
+        cursor: pointer;
+        &:hover {
+            color: whitesmoke;
+        }
+    }
+
+    &__pause {
+        margin-left: 10px;
+        color: white;
+    }
+}
+
+.click {
+    margin-left: 10px;
+    font-weight: 600;
+    display: flex;
+}

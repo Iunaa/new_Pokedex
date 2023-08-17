@@ -3,19 +3,21 @@ import './App.scss';
 import Navbar from './Components/organisms/Navbar/Navbar';
 import Searchbar from './Components/organisms/SearchBar/Searchbar';
 import Pokedex from './Components/organisms/Pokedex/Pokedex';
-import { getPokemonData, getPokemons } from './api';
+import { getPokemonData, getPokemons, searchPokemon } from './api';
 import { FavoriteProvider } from './Components/organisms/Contexts/favoritesContext';
+import Play from './Components/Play/Play';
 
 
-const favoriteKey = "favorites"
+
+
 function App() {
   const [loading, setLoading] = useState(false)
   const [page, setPage] = useState(0);
-    
+  const [notFound, setNotFound] = useState(false)
   const [totalPages, setTotalPages] = useState(0);
   const [pokemons, setPokemons] = useState([]);
   const [favorites, setFavorites] = useState([]);    //lista de favoritos que temos
-  const itensPerPage = 26  // a quantidade que cada array tras
+  const itensPerPage = 27  // a quantidade que cada array tras
 
   const fetchPokemons = async () => {
     try{
@@ -44,30 +46,47 @@ function App() {
  }, [page])  // como o page vai alterar o componente vai renderizar novamente e vai chamar os pokemons
 
 
-  const updateFavoritePokemons = (name) => {
+  const updateFavoritePokemon = (name) => {
     const updatedFavorites= [...favorites]   //clonando os favoritos para outra variável que iremos mexer
     const favoriteIndex = favorites.indexOf(name)     //ver nos favoritos se ele ja tem o pokemon, se ele tiver, quer dizer que tenho que remover
     if(favoriteIndex >= 0){
-      updatedFavorites.splice(favoriteIndex, 1)    //removo o indice
+      updatedFavorites.splice(favoriteIndex, 1)    //r;emovo o indice
     }else{
       updatedFavorites.push(name);       //fazer um push para adicionar a nossa lista
-      window.localStorage.setItem(favoriteIndex, JSON.stringify(updatedFavorites));
-      setFavorites(updatedFavorites);     //podemos dizer que nossos favoritos sao essa lista atualizada
-
     }
+    setFavorites(updatedFavorites)
+ }
+    const onSearchHandler = async (pokemon) => {
+      if(!pokemon) {
+       return fetchPokemons();
+      }
+        setLoading(true)
+        setNotFound(false)
 
-  }
- 
+        const result = await searchPokemon(pokemon)
+          if(!result){
+            
+            setNotFound(true)
+
+          }else{
+            setPokemons([result])
+          }
+          setLoading(false)
+        
+
+      }
+   
   return (
    <FavoriteProvider
    value={{
-    favoritePokemons: favorites,
-    updateFavoritePokemons: updateFavoritePokemons,
+    favoritePokemon: favorites,
+    updateFavoritePokemon: updateFavoritePokemon,
    }}
    >
     <div>
       <Navbar/>
-      <Searchbar/>
+      <Searchbar onSearchHandler={onSearchHandler}/>
+      <Play />
       <Pokedex pokemons={pokemons} loading={loading} page={page} totalPages={totalPages} setPage={setPage}/>
       </div>
     </FavoriteProvider>

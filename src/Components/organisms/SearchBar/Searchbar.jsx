@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import style from "./searchbar.module.scss";
-import { searchPokemon, onSearchHandler } from '../../../api/index';
+
 
 
 const Searchbar = (props) => {

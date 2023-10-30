@@ -6,10 +6,6 @@
     margin: 0;
 
     font-family: "Epilogue", sans-serif;
-
-    background-color: black;
-
-    
 }
 
 ul,
@@ -27,12 +23,10 @@ body {
     font-family: sans-serif;
 
     line-height: 1;
-    background-color: black;
 }
 
 body[data-stuck="true"] {
     overflow: hidden;
-    
 }
 
 a {
